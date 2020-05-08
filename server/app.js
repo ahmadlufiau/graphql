@@ -11,7 +11,7 @@ const app = express()
 var mongodb_url = process.env.MONGOLAB_URL;
 mongoose
  .connect(
-  mongodb_url,
+  "mongodb+srv://new-user_lufi:lufi1234@cluster0-mgvbm.mongodb.net/test?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true }
  )
  .then(() => console.log("Connected to MongoDB Atlas"))
