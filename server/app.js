@@ -2,17 +2,21 @@ const express = require('express')
 const graphqlHTTP = require('express-graphql')
 const schema = require('./schema/schema')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 require('dotenv').config();
 
 const app = express()
 
+// allow cross-origin request
+app.use(cors())
+
 // connect to mlab database
 var mongodb_url = process.env.MONGOLAB_URL;
 mongoose
  .connect(
-  "mongodb+srv://new-user_lufi:lufi1234@cluster0-mgvbm.mongodb.net/test?retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true }
+    mongodb_url,
+    { useNewUrlParser: true, useUnifiedTopology: true }
  )
  .then(() => console.log("Connected to MongoDB Atlas"))
  .catch(err => console.log("Error: ", err.message));
